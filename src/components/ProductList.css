@@ -1,0 +1,147 @@
+h1 {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 6px 12px;
+}
+
+.product-header {
+  background-color: #def1f4;
+  position: relative;
+}
+
+.product-header select {
+  position: absolute;
+  right: 10px; top: 6px;
+  z-index: 10;
+  border: 1px solid #a4a4a4;
+  border-radius: 6px;
+  background-color: #f8f8f8;
+  padding: 2px;
+}
+
+.product-container {
+  margin: 8px 0; padding: 0;
+}
+
+.product-container ul { margin: 0; padding: 0; list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.product-container li {
+  display: inline-block;
+  width: 25%;
+  padding: 10px;
+  border: 1px solid #e1e1e1;
+  background-color: white;
+  box-sizing: border-box;
+}
+
+.product-image {
+  text-align: center;
+}
+
+.product-image img {
+  max-height: 140px;
+  max-width: 140px;
+  width: 100%;
+}
+
+.product-banners, .product-cta {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-content: flex-end;
+}
+
+.product-banners {
+  height: 26px;
+  margin-top: -12px;
+  margin-bottom: 6px;
+}
+
+.product-name {
+  font-size: 12px;
+}
+
+.product-price {
+  font-size: 18px;
+}
+
+.product-sale, .product-merchandising {
+  font-size: 8px;
+  color: #ffffff;
+  padding: 6px 12px;
+}
+
+.product-sale {
+  background-color: #cc3333;
+}
+
+.product-merchandising {
+  background-color: #009900;
+}
+
+.product-container li.col-3 {
+  width: 33.3333%;
+}
+
+.product-container li.col-2 {
+  width: 50%;
+}
+
+.product-container li.col-error {
+  width: 100%; text-align: center;
+  color: #cc3333;
+}
+
+/* SPINNER */
+.loader {
+  margin: 7rem auto 0;
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ANIMATION */
+.product-container.in {
+  transition: all 0.9s ease;
+  background: white;
+}
+.product-container.out {
+  background: #eef1f1;
+}
+
+.product-container.out li {
+  border: none; min-height: 428px;
+  padding: 10px;
+}
+
+.product:hover {
+  box-shadow: inset 0 0 0 2px #53a7ea;
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+
+/* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .product-container li {
+      width: 50% !important;
+    }
+}
