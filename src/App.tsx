@@ -4,17 +4,19 @@ import useCustomFetch from './services/useCustomFetch';
 import ProductList from './components/ProductList';
 import ProductPics from './components/ProductPics';
 
+// Type checking for title
 type AppProps = {
   title: string
 }
-
-const pics = Object.values(ProductPics);
 
 function App(props: AppProps) {
 
   // 1. Use custom hook to fetch data from API url
   const url = 'https://api.jsonbin.io/b/5cae9a54fb42337645ebcad3';
   const [data, loading, hasError] = useCustomFetch(url);
+
+  // 2. Get Product Pics List, then align to productImage using map func
+  const pics = Object.values(ProductPics);
 
   return (
     <>
@@ -29,23 +31,18 @@ function App(props: AppProps) {
         </div>
         <div className={"product-container " + (loading? "out" : "in")}>
           <ul>
+          // Load Spinner while we fetch data
           {
             loading? (
               <li className="col-error"><div className="loader"></div></li>
             ) : ""
           }
+
+          // Load Product List if there is no errors
           {
             !hasError? (
-              Object.values(data).map((item: { 
-                index: number;
-                isSale: boolean;
-                isExclusive: boolean;
-                price: string;
-                productImage: string;
-                productName: string;
-                size: string;
-              }, index) => (
-                <li key={index} className="product col-0">
+              Object.values(data).map((item, index) => (
+                <li key={item.index} className="product col-0">
                   <ProductList 
                     isSale={item.isSale}
                     isExclusive={item.isExclusive}
